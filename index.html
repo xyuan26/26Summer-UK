@@ -1,0 +1,430 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英伦三城 · 学术圣地 × 达芬奇密码 × 西区戏剧</title><style>
+  :root{
+    --ink:#0b2545;--ink2:#13315c;--navy-grad:linear-gradient(135deg,#0b2545,#1c4076);
+    --gold:#b08d57;--gold-l:#cdaa6e;--burgundy:#6b2737;--green:#3f5d52;
+    --cream:#f6f2ea;--paper:#fffdf8;--ink-text:#2a241f;--text-l:#5a5048;--line:#e7ddcd;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;background:var(--cream);color:var(--ink-text);line-height:1.85;font-size:16px}
+  .wrap{max-width:880px;margin:0 auto;background:var(--paper);box-shadow:0 0 60px rgba(11,37,69,.1)}
+
+  /* HERO */
+  .hero{background:var(--navy-grad);color:#fff;padding:64px 48px 54px;text-align:center;position:relative;overflow:hidden}
+  .hero::after{content:"🗝️";position:absolute;font-size:210px;opacity:.06;right:-26px;bottom:-54px;transform:rotate(-18deg)}
+  .hero .crest{font-size:13px;letter-spacing:5px;color:var(--gold-l);margin-bottom:18px}
+  .hero h1{font-size:36px;letter-spacing:1px;margin-bottom:12px;line-height:1.35}
+  .hero .sub{font-size:15px;color:var(--gold-l);letter-spacing:3px;margin-bottom:20px}
+  .hero .date{display:inline-block;border:1px solid rgba(255,255,255,.3);border-radius:40px;padding:8px 26px;font-size:14px;letter-spacing:1px}
+
+  section{padding:44px 48px;border-bottom:1px solid var(--line)}
+  .sec-tag{display:inline-block;background:var(--ink);color:#fff;font-size:12px;letter-spacing:2px;padding:4px 14px;border-radius:3px;margin-bottom:16px}
+  h2{font-size:26px;color:var(--ink);margin-bottom:6px;letter-spacing:.5px}
+  h2 .en{display:block;font-size:12px;color:var(--gold);letter-spacing:2px;font-weight:400;margin-top:5px;text-transform:uppercase}
+  h3{font-size:19px;color:var(--ink2);margin:26px 0 10px;padding-left:14px;border-left:4px solid var(--gold)}
+  p{margin-bottom:14px;color:var(--text-l)}
+  .lead{font-size:17px;color:var(--ink-text);font-style:italic;background:var(--cream);padding:18px 22px;border-radius:8px;border-left:4px solid var(--ink);margin-bottom:8px}
+
+  /* PHASE NAV */
+  .phase-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .pcard{flex:1;min-width:220px;background:var(--cream);border-radius:10px;padding:18px 20px;border:1px solid var(--line);text-decoration:none;color:inherit;transition:.2s}
+  .pcard:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .pcard .ph{font-size:12px;color:var(--gold);letter-spacing:1px}
+  .pcard .pt{font-size:17px;color:var(--ink);font-weight:700;margin:5px 0}
+  .pcard .px{font-size:13px;color:var(--text-l)}
+
+  /* PHASE BAND */
+  .band{background:var(--navy-grad);color:#fff;padding:38px 48px;position:relative;overflow:hidden}
+  .band.b2{background:linear-gradient(135deg,#5a2330,#8b3a4a)}
+  .band.b3{background:linear-gradient(135deg,#33483f,#5a6b4f)}
+  .band .bn{font-size:12px;letter-spacing:3px;color:rgba(255,255,255,.7)}
+  .band h2{color:#fff;font-size:27px;margin:8px 0 6px}
+  .band h2 .en{color:rgba(255,255,255,.6)}
+  .band p{color:rgba(255,255,255,.85);font-size:14.5px;margin:0}
+
+  /* TIMELINE */
+  .tl{position:relative;margin:8px 0 0;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),var(--line))}
+  .stop{position:relative;margin-bottom:20px}
+  .stop::before{content:"";position:absolute;left:-30px;top:5px;width:15px;height:15px;border-radius:50%;background:var(--paper);border:3px solid var(--gold)}
+  .stop.lock::before{background:var(--ink);border-color:var(--ink)}
+  .stop.opt::before{background:var(--gold-l);border-color:var(--gold);border-style:dashed}
+  .stop .time{font-size:13px;color:var(--gold);font-weight:700}
+  .stop .place{font-size:16px;color:var(--ink);font-weight:700;margin:2px 0}
+  .stop .desc{font-size:14px;color:var(--text-l)}
+  .badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+  .b-lock{background:var(--ink);color:#fff}
+  .b-opt{background:#fff;color:var(--gold);border:1px solid var(--gold)}
+  .b-train{background:#2d6a8a;color:#fff}
+  .b-bus{background:var(--green);color:#fff}
+  .b-walk{background:#7a6a52;color:#fff}
+  .b-fly{background:#4a5a8a;color:#fff}
+
+  /* DINNER OPTION CARDS */
+  .opt-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin:13px 0}
+  .opt-card .head{background:var(--ink);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .opt-card .head .name{font-size:16px;font-weight:700}
+  .opt-card .head .pick{font-size:11px;background:var(--gold);color:#fff;padding:3px 11px;border-radius:20px;white-space:nowrap}
+  .opt-card .body{padding:14px 18px;font-size:14px;color:var(--text-l)}
+  .opt-card .body .meta{margin-top:8px;font-size:12.5px;color:var(--gold)}
+
+  /* BAR CALLOUT */
+  .bar{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,#f3eee4,#faf6ee);border:1px dashed var(--gold);border-radius:12px;padding:14px 18px;margin:14px 0}
+  .bar .ico{font-size:24px;line-height:1.3}
+  .bar .name{font-weight:700;color:var(--ink);font-size:15px}
+  .bar .desc{font-size:13.5px;color:var(--text-l);margin:0}
+
+  /* FEATURE */
+  .feat{border:2px solid var(--gold);border-radius:16px;background:#fff;padding:24px 28px;margin:22px 0}
+  .feat .ftag{display:inline-block;background:var(--gold);color:#fff;font-size:12px;letter-spacing:1px;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+  .feat h3{border:none;padding:0;margin:0 0 4px;font-size:23px;color:var(--ink)}
+  .feat .fsub{font-size:13px;color:var(--gold);letter-spacing:1px;margin-bottom:14px}
+
+  /* INFO + FLAVOR */
+  .info{background:var(--cream);border-radius:10px;padding:18px 22px;margin:14px 0;border:1px solid var(--line)}
+  .info .row{display:flex;padding:6px 0;font-size:14px;border-bottom:1px dashed var(--line)}
+  .info .row:last-child{border:none}
+  .info .k{flex:0 0 84px;color:var(--gold);font-weight:700}.info .v{color:var(--text-l)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .tag-row span{background:#fff;border:1px solid var(--gold);color:var(--ink2);font-size:13px;padding:4px 12px;border-radius:20px}
+
+  /* TIPS */
+  .tips{background:var(--ink);color:#eef2f8;border-radius:12px;padding:24px 28px;margin:18px 0}
+  .tips h3{color:#fff;border-color:var(--gold-l);margin-top:0}
+  .tips ul{list-style:none}
+  .tips li{padding:7px 0 7px 26px;position:relative;font-size:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .tips li:last-child{border:none}.tips li::before{content:"✦";position:absolute;left:0;color:var(--gold-l)}
+
+  footer{background:#08182f;color:#9fb0c8;text-align:center;padding:30px;font-size:13px;letter-spacing:1px}
+  footer .en{color:var(--gold);letter-spacing:2px;display:block;margin-top:6px;font-size:11px}
+
+  @media(max-width:680px){
+    .hero{padding:44px 24px}.hero h1{font-size:27px}
+    section{padding:32px 24px}.band{padding:30px 24px}
+    .opt-card .head{flex-direction:column;align-items:flex-start;gap:6px}
+    .pcard{min-width:100%}
+  }
+</style></head><body><div class="wrap">
+
+<div class="hero">
+  <div class="crest">LONDON · OXFORD · EDINBURGH</div>
+  <h1>英伦三城<br>学术圣地 × 达芬奇密码 × 西区戏剧</h1>
+  <div class="sub">A SOLO-TURNED-DUO PILGRIMAGE</div>
+  <div class="date">2026年8月26日–9月3日 · 九日行程</div>
+</div>
+
+<!-- OVERVIEW -->
+<section>
+  <span class="sec-tag">行程总览</span>
+  <h2>三段式节奏<span class="en">Three Movements</span></h2>
+  <p class="lead">先一个人硬核刷馆、走学术动线、追符号学线索；中段朋友 xy 加入，转入双人艺术、公园与西区戏剧的微醺模式；最后送别，再回到纯粹独行，以一座抹大拉教堂为整趟旅程收尾。</p>
+  <p>动线上把通勤压到最低：浅层换乘、站内 M&amp;S 补给、快线直达机场，把时间都留给博物馆、酒馆与剧场。下面三张卡片对应三个阶段，点击直达。</p>
+  <div class="phase-nav">
+    <a class="pcard" href="#p1"><span class="ph">PHASE 1 · 8/26–8/29</span><span class="pt">独行硬核</span><span class="px">大英博物馆 · 牛津学术动线 · 爱丁堡死火山</span></a>
+    <a class="pcard" href="#p2"><span class="ph">PHASE 2 · 8/30–9/2</span><span class="pt">双人艺术</span><span class="px">温网 · 华勒斯典藏馆 · 白崖 · 西区戏剧</span></a>
+    <a class="pcard" href="#p3"><span class="ph">PHASE 3 · 9/3</span><span class="pt">符号学终章</span><span class="px">送别 xy · 抹大拉教堂 · 高效离境</span></a>
+  </div>
+</section>
+
+<!-- DA VINCI THREAD -->
+<section>
+  <span class="sec-tag">隐藏主线</span>
+  <h2>贯穿全程的密码线<span class="en">The Da Vinci Code Thread</span></h2>
+  <div class="feat">
+    <span class="ftag">SYMBOLOGY · 三处朝圣</span>
+    <h3>从圣杯终点到抹大拉的回响</h3>
+    <div class="fsub">一条若隐若现的符号学线索，串起三座城市</div>
+    <p>这趟行程藏着一条只为密码迷准备的暗线。爱丁堡郊外的 <strong>罗斯林教堂（Rosslyn Chapel）</strong> 作为小说中圣杯线索的终点，是 8/29 下午的 Plan B；伦敦国家美术馆里达芬奇的第二版 <strong>《岩间圣母》</strong>，可亲眼验证小说开篇索尼埃藏匿线索的几何构图；最终在 9/3 独行的清晨，走进 <strong>圣马利亚抹大拉教堂</strong>，以"圣杯血脉"化身的符号学逻辑，为整段旅程画上句点。</p>
+    <div class="tag-row"><span>罗斯林教堂 · 学徒柱</span><span>《岩间圣母》几何</span><span>抹大拉的马利亚</span><span>哥特复兴穹顶</span></div>
+  </div>
+</section>
+
+<!-- ============ PHASE 1 ============ -->
+<div class="band" id="p1">
+  <div class="bn">PHASE 1 · 8月26日–8月29日</div>
+  <h2>独行硬核 · 学术圣地与密码探寻<span class="en">Solo &amp; Hardcore</span></h2>
+  <p>一个人、一双脚，把博物馆、图书馆、古老酒馆与死火山一次刷透。</p>
+</div>
+
+<!-- 8/26 -->
+<section>
+  <span class="sec-tag">8月26日 · 周三</span>
+  <h2>伦敦首日 · 独享大英，减负休整<span class="en">London Day One</span></h2>
+  <div class="tl">
+    <div class="stop"><div class="time">06:30 – 09:00</div><div class="place">Gatwick → Victoria · 寄存行李</div>
+      <div class="desc">快线直达 Victoria，09:00 前到 The Tophams 寄存行李，在 Belgravia 优雅地喝杯早咖啡。</div></div>
+    <div class="stop"><div class="time">午餐</div><div class="place">Museum Street Café</div>
+      <div class="desc">大英博物馆旁的快速精品轻食，下午看展前轻松补给。</div></div>
+    <div class="stop lock"><div class="time">13:30 入场 <span class="badge b-lock">已预约</span></div><div class="place">大英博物馆 British Museum</div>
+      <div class="desc">独行深度、高效率看展，直奔埃及、希腊与中国馆。</div></div>
+  </div>
+
+  <h3>🍽️ 晚餐 · 二选一</h3>
+  <div class="opt-card">
+    <div class="head"><span class="name">① Kiln（Soho）</span><span class="pick">极简机能</span></div>
+    <div class="body">全敞开式不锈钢吧台，主打极其硬核的柴烧泰北泰西混血料理，氛围轻松，伦敦高知圈极爱。
+      <div class="meta">Soho · 不锈钢吧台 · 柴烧料理</div></div>
+  </div>
+  <div class="opt-card">
+    <div class="head"><span class="name">② Gymkhana（米其林二星）</span><span class="pick">轻松小资</span></div>
+    <div class="body">位于 Mayfair，复古高级俱乐部氛围，当代印度料理与餐酒搭配极为惊艳。
+      <div class="meta">Mayfair · 米其林二星 · 复古俱乐部</div></div>
+  </div>
+
+  <div class="bar"><div class="ico">🍸</div><div>
+    <div class="name">就近酒吧 · Bar Termini（Soho）</div>
+    <p class="desc">距离 Kiln 步行 3 分钟，连续多年世界前 50。点一杯极致精准的 Negroni，速战速决。</p></div></div>
+</section>
+
+<!-- 8/27 -->
+<section>
+  <span class="sec-tag">8月27日 · 周四</span>
+  <h2>伦敦 → 牛津 · 黄昏叹息桥与古老酒馆<span class="en">Into Oxford</span></h2>
+  <div class="tl">
+    <div class="stop"><div class="time">08:30 <span class="badge b-bus">Oxford Tube</span></div><div class="place">直达牛津 St Aldate's 站</div>
+      <div class="desc">下车即是 Christ Church 学院大门，2 分钟寄存行李。</div></div>
+    <div class="stop"><div class="time">午餐</div><div class="place">The Grand Café</div>
+      <div class="desc">自学院步行 4 分钟。英国有历史记录的第一家咖啡馆（Est. 1650）。点一份高水准的烟熏三文鱼炒蛋配单品咖啡。</div></div>
+    <div class="stop"><div class="time">下午</div><div class="place">牛津学术动线</div>
+      <div class="desc">游览博德利图书馆、拉德克利夫图书馆与叹息桥。</div></div>
+    <div class="stop"><div class="time">晚餐</div><div class="place">Turf Tavern</div>
+      <div class="desc">叹息桥旁步行 2 分钟，隐藏在古城墙深处的传奇隐秘酒馆。点经典英式牛肉汉堡或肉派，体验最纯正的牛津学者夜晚。</div></div>
+  </div>
+
+  <div class="bar"><div class="ico">🌆</div><div>
+    <div class="name">就近酒吧 · The Varsity Club (TVC)</div>
+    <p class="desc">距离 Turf 步行 5 分钟，直奔 Rooftop Lounge 俯瞰牛津古老尖塔的日落全景。</p></div></div>
+</section>
+
+<!-- 8/28 -->
+<section>
+  <span class="sec-tag">8月28日 · 周五</span>
+  <h2>牛津 → 伦敦 → 爱丁堡 · 极速接力<span class="en">The Relay North</span></h2>
+  <div class="tl">
+    <div class="stop"><div class="time">早晨</div><div class="place">Christ Church · Great Hall 早餐</div>
+      <div class="desc">在充满历史感的 Great Hall 享用哈利波特同款早餐。</div></div>
+    <div class="stop"><div class="time">11:00 – 11:51 <span class="badge b-train">火车 ①</span></div><div class="place">Oxford → London Paddington</div></div>
+    <div class="stop"><div class="time">11:51 – 12:20 <span class="badge b-walk">浅层换乘</span></div><div class="place">站内黄/粉线 · 5 站直达 King's Cross</div>
+      <div class="desc">完美避开深层地铁。</div></div>
+    <div class="stop"><div class="time">12:20 – 13:30</div><div class="place">King's Cross 二楼 M&amp;S 补给</div>
+      <div class="desc">买好高品质冷餐上车。</div></div>
+    <div class="stop"><div class="time">13:30 – 18:00 <span class="badge b-train">火车 ②</span></div><div class="place">King's Cross → 爱丁堡</div>
+      <div class="desc">下午抵达，入住爱丁堡大学 SummerStay。</div></div>
+    <div class="stop lock"><div class="time">晚餐 <span class="badge b-lock">已锁定</span></div><div class="place">Arcade Bar（Haggis &amp; Whisky House）</div>
+      <div class="desc">老城皇家英里大道附近，专注苏格兰国菜 Haggis 与精选威士忌的高口碑餐酒馆。没有 Fine Dining 的拘束——点一份招牌罗伯特·彭斯哈吉斯，配一小杯泥煤风味本地威士忌，最纯正的爱丁堡地头蛇体验。</div></div>
+  </div>
+
+  <div class="bar"><div class="ico">🥃</div><div>
+    <div class="name">就近酒吧 · Bramble Bar &amp; Lounge</div>
+    <p class="desc">隐藏在地下室的世界 50 佳酒吧，威士忌与现代澄清技术的完美融合。</p></div></div>
+</section>
+
+<!-- 8/29 -->
+<section>
+  <span class="sec-tag">8月29日 · 周六</span>
+  <h2>爱丁堡 · 古典音乐与死火山日落<span class="en">Music &amp; the Dead Volcano</span></h2>
+  <div class="tl">
+    <div class="stop lock"><div class="time">11:00 – 13:00 <span class="badge b-lock">准时</span></div><div class="place">Queen's Hall 音乐会</div>
+      <div class="desc">聆听爱丁堡艺术节核心系列音乐会。</div></div>
+    <div class="stop"><div class="time">中餐</div><div class="place">The Outsider</div>
+      <div class="desc">老城景观餐厅，直面爱丁堡城堡，高性价比的当季海鲜与意面，轻松快捷。</div></div>
+    <div class="stop"><div class="time">下午</div><div class="place">皇家英里大道 → 亚瑟王座 Arthur's Seat</div>
+      <div class="desc">徒步登上死火山山顶，俯瞰整座城市与远处的福斯湾。</div></div>
+    <div class="stop opt"><div class="time">下午 <span class="badge b-opt">密码迷 Plan B</span></div><div class="place">罗斯林教堂 Rosslyn Chapel</div>
+      <div class="desc">若极度渴望探寻圣杯终点，可放弃亚瑟王座，打车 25 分钟前往郊区的罗斯林教堂，探寻学徒柱与地宫密码。</div></div>
+  </div>
+
+  <h3>🍽️ 晚餐 · 二选一</h3>
+  <div class="opt-card">
+    <div class="head"><span class="name">① The Scran &amp; Scallie</span><span class="pick">高质餐酒</span></div>
+    <div class="body">米其林星级大厨的高级 Gastropub，肉派和海鲜极其硬核，氛围轻松。
+      <div class="meta">Gastropub · 硬核肉派 &amp; 海鲜</div></div>
+  </div>
+  <div class="opt-card">
+    <div class="head"><span class="name">② Timberyard</span><span class="pick">米其林星级</span></div>
+    <div class="body">旧仓库改建，主打北欧风苏格兰料理与低干预天然葡萄酒。
+      <div class="meta">旧仓库 · 北欧风 · 自然酒</div></div>
+  </div>
+
+  <div class="bar"><div class="ico">🍹</div><div>
+    <div class="name">酒吧 · Lucky Liquor Co.</div>
+    <p class="desc">每一季只用 13 种特定基酒创作 13 款调酒，极简而精准。</p></div></div>
+</section>
+
+<!-- ============ PHASE 2 ============ -->
+<div class="band b2" id="p2">
+  <div class="bn">PHASE 2 · 8月30日–9月2日</div>
+  <h2>双人艺术 · 公园 · 西区戏剧与极致微醺<span class="en">Art, Parks &amp; the West End</span></h2>
+  <p>朋友 xy 正式加入。节奏放缓，转入艺术殿堂、公园散步与剧场夜的双人模式。</p>
+</div>
+
+<!-- 8/30 -->
+<section>
+  <span class="sec-tag">8月30日 · 周日</span>
+  <h2>独自温网朝盛，傍晚与 xy 精致重逢<span class="en">Wimbledon &amp; Reunion</span></h2>
+  <div class="tl">
+    <div class="stop"><div class="time">11:10 – 12:30 <span class="badge b-fly">飞行</span></div><div class="place">爱丁堡 → 伦敦城机场（LCY · 英航）</div></div>
+    <div class="stop"><div class="time">12:50 – 13:40</div><div class="place">极速回归 Victoria</div>
+      <div class="desc">DLR 轻轨转红线，两点不到回到 The Tophams 办好入住、洗漱一新。</div></div>
+    <div class="stop"><div class="time">14:00 – 17:30 <span class="badge b-train">District Line</span></div><div class="place">🎾 单人温网时间 · Southfields</div>
+      <div class="desc">Victoria 搭绿线直达 Southfields，前往全英俱乐部官方商店狂揽专属战利品。5 点半前回酒店放好。</div></div>
+    <div class="stop lock"><div class="time">18:00 之后 <span class="badge b-lock">xy 汇合</span></div><div class="place">重逢晚餐</div>
+      <div class="desc">xy 抵达，见下方二选一。</div></div>
+  </div>
+
+  <h3>🍽️ 重逢晚餐 · 二选一</h3>
+  <div class="opt-card">
+    <div class="head"><span class="name">① Lorne</span><span class="pick">轻松时髦</span></div>
+    <div class="body">Victoria 极受本地饕客欢迎的现代英法餐酒馆，独立酒单充满精巧惊喜，艺术人群极爱。
+      <div class="meta">Victoria · 现代英法 · 精巧酒单</div></div>
+  </div>
+  <div class="opt-card">
+    <div class="head"><span class="name">② The Goring Dining Room</span><span class="pick">低调奢华</span></div>
+    <div class="body">就在酒店附近，极其正统高雅的英式 Fine Dining。
+      <div class="meta">酒店旁 · 正统英式 Fine Dining</div></div>
+  </div>
+
+  <div class="bar"><div class="ico">🍸</div><div>
+    <div class="name">酒吧 · Satan's Whiskers</div>
+    <p class="desc">经典鸡尾酒天花板，用一杯完美的 Martini 开启双人行。</p></div></div>
+</section>
+
+<!-- 8/31 -->
+<section>
+  <span class="sec-tag">8月31日 · 周一</span>
+  <h2>斯坦福桥、华勒斯典藏馆与海德公园<span class="en">Football, Rococo &amp; the Park</span></h2>
+  <div class="tl">
+    <div class="stop"><div class="time">10:00 – 11:30 <span class="badge b-train">District Line</span></div><div class="place">⚽ 斯坦福桥 · Chelsea Megastore</div>
+      <div class="desc">Victoria 搭绿线 9 分钟直达 Fulham Broadway，为 Luke 和 xy 男朋友极速横扫新赛季正版球衣与围巾。</div></div>
+    <div class="stop"><div class="time">中午</div><div class="place">The Wallace Restaurant</div>
+      <div class="desc">从球场打 Uber（15 分钟）直奔华勒斯典藏馆，在布满粉红粉蓝、被玻璃穹顶覆盖的绝美中庭温室餐厅吃顿轻松法餐。</div></div>
+    <div class="stop"><div class="time">下午</div><div class="place">华勒斯典藏馆 → 海德公园</div>
+      <div class="desc">馆内观赏顶级私人豪宅的洛可可油画《秋千》，随后步行 10 分钟进入海德公园与肯辛顿花园，漫步至蛇形画廊。</div></div>
+  </div>
+
+  <h3>🍽️ 晚餐 · 二选一</h3>
+  <div class="opt-card">
+    <div class="head"><span class="name">① Sager + Wilde（Paradise Row）</span><span class="pick">顶尖餐酒馆</span></div>
+    <div class="body">伦敦艺术人群极度推崇的先锋餐酒馆，独立酒单小众且富有探索性，氛围高级轻松。
+      <div class="meta">先锋餐酒馆 · 探索性酒单</div></div>
+  </div>
+  <div class="opt-card">
+    <div class="head"><span class="name">② Elystan Street</span><span class="pick">高水准时髦</span></div>
+    <div class="body">南肯辛顿高口碑现代英式邻里餐厅（米其林一星）。
+      <div class="meta">South Kensington · 米其林一星</div></div>
+  </div>
+
+  <div class="bar"><div class="ico">🌿</div><div>
+    <div class="name">就近酒吧 · The Botanist（Sloane Square）</div>
+    <p class="desc">优雅的斯隆广场，现代绿植美学，香草调系鸡尾酒非常受艺术女性欢迎。</p></div></div>
+</section>
+
+<!-- 9/1 -->
+<section>
+  <span class="sec-tag">9月1日 · 周二</span>
+  <h2>白崖大自然之旅<span class="en">Seven Sisters</span></h2>
+  <div class="tl">
+    <div class="stop"><div class="time">全天</div><div class="place">七姐妹白崖 Seven Sisters</div>
+      <div class="desc">草坪海景野餐，享受全天的大自然洗礼。</div></div>
+    <div class="stop opt"><div class="time">备选 <span class="badge b-opt">天气不佳时</span></div><div class="place">格林威治天文台一日游</div>
+      <div class="desc">若天气不佳，可临时切换为格林威治天文台。</div></div>
+  </div>
+
+  <h3>🍽️ 晚餐 · 二选一</h3>
+  <div class="opt-card">
+    <div class="head"><span class="name">① Spring（萨默塞特宫内）</span><span class="pick">美学巅峰</span></div>
+    <div class="body">空间纯白、优雅，充满艺术装置感，提供极具美学价值的现代意法料理。
+      <div class="meta">Somerset House · 纯白空间 · 现代意法</div></div>
+  </div>
+  <div class="opt-card">
+    <div class="head"><span class="name">② Quality Chop House</span><span class="pick">英式经典</span></div>
+    <div class="body">伦敦百年标志性英式现代小酒馆（Bistro），其千层土豆闻名全英。
+      <div class="meta">百年 Bistro · 招牌千层土豆</div></div>
+  </div>
+</section>
+
+<!-- 9/2 -->
+<section>
+  <span class="sec-tag">9月2日 · 周三</span>
+  <h2>艺术殿堂、V&amp;A 与西区戏剧黄金夜<span class="en">Galleries &amp; the West End</span></h2>
+  <div class="tl">
+    <div class="stop lock"><div class="time">上午 <span class="badge b-lock">🔎 密码打卡</span></div><div class="place">国家美术馆 National Gallery</div>
+      <div class="desc">24 路巴士直达特拉法加广场。重点朝圣达芬奇镇馆之宝第二版《岩间圣母》，亲眼验证小说开头索尼埃藏匿线索的原作几何构图。</div></div>
+    <div class="stop"><div class="time">中餐</div><div class="place">Cafe in the Crypt</div>
+      <div class="desc">教堂地下墓穴咖啡馆，快速的手工热派与浓汤，高效且有厚重感。</div></div>
+    <div class="stop"><div class="time">下午</div><div class="place">V&amp;A 博物馆 → 泰特现代 Tate Modern</div>
+      <div class="desc">先去 V&amp;A 看服装与雕塑装置设计；随后到南岸 Tate Modern，上顶楼观景台拍摄隔河对望圣保罗大教堂的艺术大片。</div></div>
+    <div class="stop lock"><div class="time">19:30 – 22:00 <span class="badge b-lock">🎭 已锁票</span></div><div class="place">西区看剧 West End Theatre</div>
+      <div class="desc">提前在官网锁票，如《悲惨世界》或《歌剧魅影》。</div></div>
+  </div>
+
+  <h3>🍽️ 剧前高效晚餐 · 二选一</h3>
+  <div class="opt-card">
+    <div class="head"><span class="name">① Brasserie Zédel（皮卡迪利）</span><span class="pick">轻松名店</span></div>
+    <div class="body">宏伟的地下巴黎风酒馆，名气极大，上菜极快，氛围极其热闹放松，适合赶场看剧。
+      <div class="meta">Piccadilly · 地下巴黎风 · 上菜快</div></div>
+  </div>
+  <div class="opt-card">
+    <div class="head"><span class="name">② J Sheekey</span><span class="pick">经典高档</span></div>
+    <div class="body">戏剧区核心，演艺界明星最爱的顶级老牌海鲜餐厅。
+      <div class="meta">戏剧区 · 老牌海鲜</div></div>
+  </div>
+
+  <div class="bar"><div class="ico">🍸</div><div>
+    <div class="name">观剧后深夜酒吧 · Connaught Bar（Mayfair）</div>
+    <p class="desc">深夜体验全英第一的 Martini Trolley 推车服务，用一杯定制马提尼为戏剧夜完美收尾。</p></div></div>
+</section>
+
+<!-- ============ PHASE 3 ============ -->
+<div class="band b3" id="p3">
+  <div class="bn">PHASE 3 · 9月3日</div>
+  <h2>符号学终章与高效离境<span class="en">The Final Cipher</span></h2>
+  <p>xy 清晨赴法，你再次开启高效独行模式，为英伦之旅写下最后一笔。</p>
+</div>
+
+<!-- 9/3 -->
+<section>
+  <span class="sec-tag">9月3日 · 周四</span>
+  <h2>抹大拉的终极回响与英伦离境<span class="en">Magdalene &amp; Departure</span></h2>
+  <div class="tl">
+    <div class="stop"><div class="time">06:30 – 07:15 <span class="badge b-train">Victoria Line</span></div><div class="place">🚂 恭送 xy 赴巴黎</div>
+      <div class="desc">从 Victoria 一车直达坐 5 站（8 分钟），07:15 前送达 King's Cross St. Pancras 欧洲之星离境大厅，送她登上 08:30 飞往巴黎的列车。</div></div>
+    <div class="stop lock"><div class="time">上午 <span class="badge b-lock">✨ 符号学朝圣</span></div><div class="place">St Mary Magdalene Church</div>
+      <div class="desc">从 St Pancras 换乘或打车前往 Paddington / Little Venice 区域的圣马利亚抹大拉教堂。哥特复兴式建筑内部极为震撼，拥有精美天顶壁画与神秘圣经雕刻。一个人走在寂静穹顶下，完成整段旅程最完美的符号学终章。</div></div>
+    <div class="stop"><div class="time">中餐</div><div class="place">The Wolseley · 精致早午餐</div>
+      <div class="desc">皮卡迪利最著名的传统 Grand Café，享用极正统、名气极大的英式早午餐或全套下午茶，为伦敦优雅收尾。</div></div>
+    <div class="stop"><div class="time">17:00 起</div><div class="place">A Bar with Shapes for a Name（几何酒吧）</div>
+      <div class="desc">包豪斯解构主题，实验室预调（Pre-batch）的极简机能风调酒，将一整天的符号学与逻辑思辨用一杯酒做最终解构。</div></div>
+    <div class="stop lock"><div class="time">18:30 起 <span class="badge b-train">Heathrow Express</span></div><div class="place">取行李 → 机场 → 23:00 飞上海</div>
+      <div class="desc">回 The Tophams 取行李 → 14 分钟地铁到 Paddington → 15 分钟 Heathrow Express 直达希思罗 → 完美卡点 23:00 航班。</div></div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section>
+  <span class="sec-tag">实用贴士</span>
+  <h2>出行备忘<span class="en">Practical Notes</span></h2>
+  <div class="tips"><h3>🔒 硬约束 · 务必提前锁定</h3><ul>
+    <li>8/26 大英博物馆 13:30 入场（已预约）</li>
+    <li>8/27 Oxford Tube 08:30 大巴 · 直达 St Aldate's</li>
+    <li>8/28 火车两段接力：Oxford→Paddington（11:00）、King's Cross→爱丁堡（13:30）</li>
+    <li>8/28 爱丁堡晚餐 Arcade Bar（已锁定）</li>
+    <li>8/29 Queen's Hall 音乐会 11:00（务必准时）</li>
+    <li>8/30 爱丁堡→LCY 航班 11:10（英航）</li>
+    <li>9/2 西区戏剧官网锁票（《悲惨世界》/《歌剧魅影》）</li>
+    <li>9/3 送别 xy：07:15 前到 St Pancras 欧洲之星；夜间 23:00 飞上海</li>
+  </ul></div>
+  <div class="tips" style="background:var(--green)"><h3>🚇 动线与节奏</h3><ul>
+    <li>换乘尽量走浅层黄/粉线，避开深层地铁拖时间</li>
+    <li>长途火车前在国王十字二楼 M&amp;S 补给高品质冷餐</li>
+    <li>离境用 Heathrow Express 快线，15 分钟直达，预留取行李时间</li>
+    <li>九月早晚温差大：备薄外套；登亚瑟王座穿防滑鞋</li>
+    <li>热门餐厅与酒吧（Kiln、Gymkhana、Lorne、J Sheekey 等）旺季建议提前订位</li>
+  </ul></div>
+</section>
+
+<footer>🗝️ 英伦三城 · 学术圣地 × 达芬奇密码 × 西区戏剧
+  <span class="en">LONDON · OXFORD · EDINBURGH · 2026.08.26–09.03</span>
+</footer>
+</div></body></html>
